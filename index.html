@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Reaction Formula — Go Viral With Food Reactions</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #000000;
+    --green: #3ddc5c;
+    --green-dark: #2db84a;
+    --white: #ffffff;
+    --gray: #111111;
+    --gray2: #1a1a1a;
+    --muted: #888;
+  }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ─── LOGO BAR ─── */
+  .logo-bar {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .logo-box {
+    border: 2px solid var(--green);
+    padding: 12px 40px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-text {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+  .logo-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--green);
+    border-radius: 50%;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding: 50px 20px 20px;
+    text-align: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .hero-headline {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(42px, 7vw, 88px);
+    line-height: 1.0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  .hero-headline .green { color: var(--green); }
+  .hero-sub-box {
+    display: inline-block;
+    border: 3px solid var(--white);
+    background: var(--black);
+    padding: 10px 30px;
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(16px, 2.5vw, 24px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 40px;
+  }
+
+  /* ─── PROOF BAR ─── */
+  .proof-bar {
+    background: var(--green);
+    padding: 0;
+    overflow: hidden;
+  }
+  .proof-bar-inner {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .proof-stat {
+    text-align: center;
+    padding: 20px 32px;
+    border-right: 2px solid rgba(0,0,0,0.15);
+    flex: 1;
+    min-width: 140px;
+  }
+  .proof-stat:last-child { border-right: none; }
+  .proof-stat .num {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    color: var(--black);
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+  .proof-stat .lbl {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(0,0,0,0.7);
+    margin-top: 4px;
+  }
+
+  /* ─── CTA BUTTON ─── */
+  .btn-cta {
+    display: inline-block;
+    background: var(--green);
+    color: var(--black);
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(18px, 2.5vw, 24px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 18px 52px;
+    border-radius: 100px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .btn-sub {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  /* ─── SECTION LABELS ─── */
+  .section-label {
+    display: inline-block;
+    border: 2px solid var(--green);
+    color: var(--green);
+    font-family: 'Anton', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    margin-bottom: 24px;
+  }
+
+  /* ─── SECTION ─── */
+  .section {
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .section-wide {
+    padding: 80px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-headline {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(32px, 5vw, 60px);
+    text-transform: uppercase;
+    line-height: 1.05;
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+  }
+  .section-headline .green { color: var(--green); }
+
+  /* ─── DARK SECTION BG ─── */
+  .bg-dark { background: var(--gray); border-top: 1px solid #222; border-bottom: 1px solid #222; }
+
+  /* ─── CHECKLIST ─── */
+  .checklist { list-style: none; margin-top: 8px; }
+  .checklist li {
+    padding: 16px 0 16px 52px;
+    border-bottom: 1px solid #222;
+    font-size: 18px;
+    color: #ddd;
+    position: relative;
+    font-weight: 500;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 32px;
+    height: 32px;
+    background: var(--green);
+    color: var(--black);
+    font-weight: 900;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+
+  /* ─── STORY BLOCK ─── */
+  .story-block {
+    border-left: 4px solid var(--green);
+    padding: 32px 36px;
+    background: var(--gray);
+    margin-top: 32px;
+  }
+  .story-block p { font-size: 18px; color: #ccc; line-height: 1.8; margin-bottom: 18px; }
+  .story-block p:last-child { margin-bottom: 0; }
+  .story-block strong { color: var(--white); }
+
+  /* ─── MODULES ─── */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2px;
+    margin-top: 40px;
+    border: 2px solid #222;
+  }
+  .module-card {
+    background: var(--gray);
+    padding: 28px 32px;
+    border: 1px solid #222;
+    position: relative;
+  }
+  .module-number {
+    font-family: 'Anton', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .module-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    color: var(--white);
+    line-height: 1.1;
+  }
+  .module-desc { font-size: 14px; color: #888; line-height: 1.65; }
+
+  /* ─── VALUE STACK ─── */
+  .value-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid #222;
+  }
+  .value-row:last-child { border-bottom: none; }
+  .value-price-struck {
+    font-family: 'Anton', sans-serif;
+    font-size: 24px;
+    color: #444;
+    text-decoration: line-through;
+    min-width: 90px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .value-name { font-size: 17px; color: #ccc; line-height: 1.4; }
+  .value-name strong { color: var(--white); display: block; font-size: 18px; }
+
+  /* ─── ORDER BOX ─── */
+  .order-section { padding: 80px 20px; max-width: 720px; margin: 0 auto; }
+  .order-box {
+    border: 3px solid var(--green);
+    background: #050a07;
+    padding: 52px 44px;
+    text-align: center;
+  }
+  .order-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(28px, 4vw, 44px);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .price-was { font-size: 20px; color: #555; text-decoration: line-through; margin-bottom: 4px; }
+  .price-now {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(72px, 12vw, 120px);
+    color: var(--green);
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+  .price-note { font-size: 14px; color: var(--muted); margin-top: 6px; margin-bottom: 36px; }
+
+  .includes-box {
+    border: 1px solid #1e1e1e;
+    background: #0a0a0a;
+    padding: 24px 28px;
+    text-align: left;
+    margin-bottom: 36px;
+  }
+  .includes-box .inc-label {
+    font-family: 'Anton', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .includes-box ul { list-style: none; }
+  .includes-box ul li {
+    font-size: 15px;
+    color: #ccc;
+    padding: 6px 0;
+    padding-left: 24px;
+    position: relative;
+  }
+  .includes-box ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 900;
+  }
+
+  /* ─── ORDER BUMP ─── */
+  .order-bump {
+    border: 2px dashed var(--green);
+    background: #04100a;
+    padding: 28px 32px;
+    text-align: left;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin-bottom: 36px;
+  }
+  .order-bump input[type="checkbox"] {
+    width: 26px;
+    height: 26px;
+    accent-color: var(--green);
+    flex-shrink: 0;
+    margin-top: 4px;
+    cursor: pointer;
+  }
+  .bump-tag {
+    font-family: 'Anton', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--black);
+    background: var(--green);
+    padding: 4px 12px;
+    display: inline-block;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .bump-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .bump-desc { font-size: 14px; color: #aaa; line-height: 1.6; margin-bottom: 10px; }
+  .bump-price { font-size: 16px; color: var(--green); font-weight: 800; }
+  .bump-price span { color: #555; text-decoration: line-through; margin-right: 6px; font-weight: 400; }
+
+  /* ─── GUARANTEE ─── */
+  .guarantee-box {
+    border: 1px solid #222;
+    background: var(--gray);
+    padding: 36px 40px;
+    margin-top: 36px;
+    text-align: left;
+  }
+  .guarantee-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-item { border-bottom: 1px solid #1e1e1e; padding: 28px 0; }
+  .faq-q {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+  .faq-a { font-size: 16px; color: #999; line-height: 1.7; }
+
+  /* ─── FINAL CTA ─── */
+  .final-cta {
+    padding: 100px 20px;
+    text-align: center;
+    background: var(--black);
+    border-top: 3px solid var(--green);
+  }
+  .final-cta-headline {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(36px, 6vw, 72px);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #050505;
+    border-top: 1px solid #111;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  footer p { font-size: 13px; color: #333; margin-bottom: 10px; }
+  footer a { color: #3a3a3a; text-decoration: none; margin: 0 10px; }
+
+  /* ─── DIVIDER ─── */
+  .green-divider { height: 3px; background: var(--green); }
+  .divider { height: 1px; background: #1a1a1a; }
+
+  @media (max-width: 640px) {
+    .proof-bar-inner { flex-direction: column; }
+    .proof-stat { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.15); }
+    .order-box { padding: 36px 20px; }
+    .order-bump { flex-direction: column; }
+    .modules-grid { grid-template-columns: 1fr; }
+    .guarantee-box { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGO BAR -->
+<div class="logo-bar">
+  <div class="logo-box">
+    <div class="logo-dot"></div>
+    <div class="logo-text">Diabolical Food Disasters</div>
+    <div class="logo-dot"></div>
+  </div>
+</div>
+
+<div class="green-divider"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1 class="hero-headline">
+    How I Got<br>
+    <span class="green">2.4 Million Views</span><br>
+    in 30 Days<br>
+    Reacting to Bad Food<br>
+    on My Phone
+  </h1>
+  <div class="hero-sub-box">
+    The Reaction Formula — Full System — $47
+  </div>
+  <br><br>
+  <a href="#order" class="btn-cta">Get Instant Access — $47</a>
+  <span class="btn-sub">One-time payment · Instant digital delivery · All sales final</span>
+</div>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-bar-inner">
+    <div class="proof-stat"><div class="num">2.4M</div><div class="lbl">Views in 30 Days</div></div>
+    <div class="proof-stat"><div class="num">246</div><div class="lbl">Reels Posted</div></div>
+    <div class="proof-stat"><div class="num">548K</div><div class="lbl">Top Single Video</div></div>
+    <div class="proof-stat"><div class="num">$0</div><div class="lbl">Ad Spend</div></div>
+    <div class="proof-stat"><div class="num">1 Phone</div><div class="lbl">Equipment Used</div></div>
+  </div>
+</div>
+
+<!-- FOR YOU -->
+<div class="bg-dark">
+  <div class="section">
+    <div class="section-label">Is This For You?</div>
+    <h2 class="section-headline">Stop Watching Other People Go Viral While You Try to Figure Out the Algorithm</h2>
+    <ul class="checklist">
+      <li>You've thought about starting a reaction page but don't know where to begin</li>
+      <li>You're posting content but getting zero traction — and you can't figure out why</li>
+      <li>You have a phone but no studio, no ring light, no editing skills</li>
+      <li>You want to build something that makes money in your sleep — not another hustle that demands 24/7</li>
+      <li>You've seen food disaster pages blow up and thought "I could do that" — but never started</li>
+      <li>You want a real formula, not motivation. Not vibes. A step-by-step system that actually works.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- STORY -->
+<div class="section">
+  <div class="section-label">The Story</div>
+  <h2 class="section-headline">I Didn't Go Viral by Accident.<br><span class="green">I Went Viral by System.</span></h2>
+  <div class="story-block">
+    <p>I started Diabolical Food Disasters with nothing. No following. No editing experience. No equipment beyond a phone I already owned.</p>
+    <p>The first video I posted got 200 views. I posted the next one anyway. Then the next one. <strong>246 times in 30 days.</strong></p>
+    <p>On day 12, a video hit <strong>548,000 views.</strong> The comments exploded. My DMs filled up. People wanted to know how I was doing it.</p>
+    <p>Here's what nobody tells you: going viral isn't the hard part. <strong>Going viral on purpose is.</strong> There's a formula — the right hooks, the right formats, the right posting system. Once I had it locked, every day became predictable.</p>
+    <p>This course is that formula. Exactly what I did. Exactly how I'd do it again starting from zero tomorrow.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- MODULES -->
+<div class="bg-dark">
+  <div class="section-wide">
+    <div style="text-align:center; margin-bottom: 48px;">
+      <div class="section-label">What's Inside</div>
+      <h2 class="section-headline">10 Modules. Everything You Need<br>to <span class="green">Start Posting and Go Viral.</span></h2>
+      <p style="color: #666; font-size: 16px; margin-top: 8px;">No filler. No theory. Every lesson is something you can act on today.</p>
+    </div>
+    <div class="modules-grid">
+      <div class="module-card"><div class="module-number">Module 0</div><div class="module-title">Overview + The 30-Day Bet</div><div class="module-desc">Why volume beats perfection. The mindset that separates pages that blow up from the ones that quit on day 7.</div></div>
+      <div class="module-card"><div class="module-number">Module 1</div><div class="module-title">Find Your Wave</div><div class="module-desc">How to find your niche angle and pick the specific type of food content your audience will actually share.</div></div>
+      <div class="module-card"><div class="module-number">Module 2</div><div class="module-title">Why It Works + Hooks That Stop the Scroll</div><div class="module-desc">The psychology behind food reaction content. The 5 hook formulas that built 2.4M views — with real examples.</div></div>
+      <div class="module-card"><div class="module-number">Module 3</div><div class="module-title">How to React on Camera</div><div class="module-desc">Getting comfortable on camera. The body language, timing, and delivery that makes your reaction the content.</div></div>
+      <div class="module-card"><div class="module-number">Module 4</div><div class="module-title">Your Tool Stack</div><div class="module-desc">Everything you need and nothing you don't. CapCut, Instagram, TikTok — all free. Setup in under an hour.</div></div>
+      <div class="module-card"><div class="module-number">Module 5</div><div class="module-title">Reaction Styles (3 Formats)</div><div class="module-desc">The Classic React, The Reveal Reaction, and Yappin. When to use each and why mixing them drives consistent growth.</div></div>
+      <div class="module-card"><div class="module-number">Module 6</div><div class="module-title">The Posting System</div><div class="module-desc">How to batch 10 videos in a morning and schedule them across the day. The exact time slots that get the most reach.</div></div>
+      <div class="module-card"><div class="module-number">Module 7</div><div class="module-title">Account Setup First</div><div class="module-desc">IG and TikTok setup done right from day one. Bio formula, username strategy, first 9 posts — done right from day 1.</div></div>
+      <div class="module-card"><div class="module-number">Module 8</div><div class="module-title">Engagement Is the Algorithm</div><div class="module-desc">How comments, shares, and saves actually work. The one question at the end of every video that doubles your comments.</div></div>
+      <div class="module-card"><div class="module-number">Module 9</div><div class="module-title">Advanced — Claude-Assisted Posting</div><div class="module-desc">How I use AI to write captions, generate hooks, and plan content batches in minutes instead of hours.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUE STACK -->
+<div class="section">
+  <div class="section-label">What You're Getting</div>
+  <h2 class="section-headline">Here's Everything Included<br>and What It's Worth</h2>
+  <div style="margin-top: 36px;">
+    <div class="value-row"><div class="value-price-struck">$197</div><div class="value-name"><strong>The Reaction Formula — Full Course</strong>10 modules, complete viral system</div></div>
+    <div class="value-row"><div class="value-price-struck">$97</div><div class="value-name"><strong>5 Proven Hook Formulas</strong>The exact hooks behind 2.4M views with real examples</div></div>
+    <div class="value-row"><div class="value-price-struck">$97</div><div class="value-name"><strong>The Batch Posting Blueprint</strong>10 videos in one morning. Scheduled for the whole day.</div></div>
+    <div class="value-row"><div class="value-price-struck">$97</div><div class="value-name"><strong>Claude-Assisted Content Workflow</strong>AI workflow for hooks, captions, and content batches</div></div>
+    <div class="value-row"><div class="value-price-struck">$47</div><div class="value-name"><strong>The Content Compound Effect Guide</strong>How to build a posting habit that snowballs</div></div>
+  </div>
+  <div style="display:flex; justify-content: space-between; align-items: center; padding: 28px 0 12px; border-top: 1px solid #222; margin-top: 8px;">
+    <div style="font-family: 'Anton', sans-serif; font-size: 20px; letter-spacing: 1px; text-transform: uppercase; color: #666;">Total Value:</div>
+    <div style="font-family: 'Anton', sans-serif; font-size: 36px; color: #444; text-decoration: line-through;">$535</div>
+  </div>
+  <div style="text-align:center; font-size: 18px; color: #888; margin-top: 4px;">You get all of it today for just <span style="font-family:'Anton',sans-serif; font-size: 28px; color: var(--green); letter-spacing:1px;">$47</span></div>
+</div>
+
+<div class="green-divider"></div>
+
+<!-- ORDER -->
+<div id="order" class="order-section">
+  <div style="text-align:center; margin-bottom: 32px;">
+    <div class="section-label">Get Instant Access</div>
+    <h2 class="section-headline">Start Building Your<br>Reaction Page <span class="green">Today</span></h2>
+  </div>
+  <div class="order-box">
+    <div class="order-title">The Reaction Formula</div>
+    <div style="font-size: 14px; color: #444; margin-bottom: 20px;">Complete Course + All Bonuses</div>
+    <div class="price-was">Total Value: $535</div>
+    <div class="price-now">$47</div>
+    <div class="price-note">One-time payment · Lifetime access · Instant delivery</div>
+
+    <div class="includes-box">
+      <div class="inc-label">Everything Included:</div>
+      <ul>
+        <li>10-module video course (full system)</li>
+        <li>5 hook formulas with real examples</li>
+        <li>Batch posting workflow</li>
+        <li>AI-assisted content workflow</li>
+        <li>The Content Compound Effect guide</li>
+        <li>Lifetime access + future updates</li>
+      </ul>
+    </div>
+
+    <div class="order-bump">
+      <input type="checkbox" id="bump-check">
+      <div>
+        <div class="bump-tag">Add to My Order</div>
+        <div class="bump-title">DM Closing Playbook</div>
+        <div class="bump-desc">The 3-message sequence I use to turn warm Instagram leads into buyers before they forget who you are. Includes 6 objection scripts and the exact follow-up messages. Copy and paste ready.</div>
+        <div class="bump-price"><span>$47</span>Add for just $27 today</div>
+      </div>
+    </div>
+
+    <a href="https://diabolicalfood.com/order-form-page" class="btn-cta" style="display: block; padding: 22px; font-size: clamp(18px, 3vw, 26px);">
+      YES — Give Me Instant Access
+    </a>
+    <div style="font-size: 13px; color: #333; margin-top: 14px; line-height: 1.9;">
+      Secure checkout · Instant digital delivery · All sales final<br>
+      <span style="font-size: 12px; color: #2a2a2a;">Statement charge: <strong style="color:#333;">GREGORY McCULLOUGH ENT</strong></span>
+    </div>
+  </div>
+
+  <div class="guarantee-box">
+    <div class="guarantee-title">Our Commitment to You</div>
+    <p style="color: #888; font-size: 15px; line-height: 1.75;">This course contains everything you need to start building your reaction page from zero. The formula works — but only if you do. We've documented the exact system that produced 2.4M views in 30 days, and we stand behind the quality and completeness of the content.</p>
+    <p style="margin-top: 12px; font-size: 13px; color: #444;">All sales are final. Please review the full product description and our <a href="#" style="color:#444;">Terms of Service</a> before purchasing.</p>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="bg-dark">
+  <div class="section">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-headline">Questions You Probably Have</h2>
+    <div style="margin-top: 40px;">
+      <div class="faq-item"><div class="faq-q">Do I need any experience?</div><div class="faq-a">None. This course starts from zero. If you have a smartphone and can film yourself, you have everything you need.</div></div>
+      <div class="faq-item"><div class="faq-q">What equipment do I need?</div><div class="faq-a">Your phone. That's it. iPhone or Android. We use free apps — CapCut, Instagram, TikTok. No ring light required.</div></div>
+      <div class="faq-item"><div class="faq-q">Does this only work for food content?</div><div class="faq-a">The formula works for any reaction niche. Food is what I built — and what I teach in the examples — but the system applies to any reaction content.</div></div>
+      <div class="faq-item"><div class="faq-q">How fast can I see results?</div><div class="faq-a">Depends on how fast you post. I saw significant traction by day 12. Most people who post consistently see their first viral video within 30 days.</div></div>
+      <div class="faq-item"><div class="faq-q">Is there a refund policy?</div><div class="faq-a">All sales are final. Because this is a digital product delivered immediately upon purchase, we do not offer refunds.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <div class="section-label">Last Chance</div>
+  <div class="final-cta-headline">
+    The People Posting Now Are<br>Building the Advantage<br>
+    <span style="color: var(--green);">You'll Wish You Had Started Earlier</span>
+  </div>
+  <p style="color: #555; font-size: 18px; margin-bottom: 40px;">This price goes up. The system doesn't change. Get in now.</p>
+  <a href="#order" class="btn-cta" style="font-size: clamp(18px, 3vw, 26px); padding: 22px 60px;">
+    Get The Reaction Formula — $47
+  </a>
+  <span class="btn-sub" style="margin-top: 16px;">Instant access · One-time payment · All sales final</span>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Gregory McCullough Enterprises d/b/a Diabolical Food Disasters · Greenlawn, NY</p>
+  <p>
+    <a href="#">Terms of Service</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Refund Policy</a>
+    <a href="mailto:hello@diabolicalfood.com">Contact</a>
+  </p>
+  <p style="margin-top: 20px; color: #1a1a1a;">© 2026 Diabolical Food Disasters. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
